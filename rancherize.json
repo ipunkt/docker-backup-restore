@@ -1,0 +1,26 @@
+{
+	"blueprints": {
+		"webserver": "Rancherize\\Blueprint\\Webserver\\WebserverBlueprint"
+	},
+	"blueprint": "webserver",
+	"default": {
+		"rancher": {
+			"account": "default"
+		},
+		"docker": {
+			"account": "default",
+			"repository": "",
+			"base-image": "",
+			"image": ""
+		},
+		"nginx-config": "",
+		"service-name": ""
+	},
+	"environments": {
+		"staging": {
+			"database": {
+				"global":"default-database"
+			}
+		}
+	}
+}
