@@ -17,7 +17,7 @@
 		"service-name": ""
 	},
 	"environments": {
-		"staging": {
+		"db": {
 			"database": {
 				"global":"default-database"
 			}

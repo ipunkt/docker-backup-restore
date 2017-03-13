@@ -2,8 +2,9 @@
 	"rancher": {
 		"default": {
 			"url": "%%RANCHER_URL%%",
-				"key": "%%RANCHER_KEY%%",
-				"secret": "%%RANCHER_SECRET%%"
+			"key": "%%RANCHER_KEY%%",
+			"secret": "%%RANCHER_SECRET%%",
+			"rancher-compose":"%%RANCHER_COMPOSE%%"
 		}
 	},
 		"docker": {
@@ -14,6 +15,8 @@
 		},
 		"database": {
 			"default-database": {
+				"service":"db",
+				"stack":"db",
 				"backup":{
 					"method":"storagebox",
 					"box": "default-storagebox",

@@ -9,7 +9,12 @@ RUN chmod +x /entrypoint.sh \
 	 && mkdir -p /home/user \
 	 && mkdir -p /project \
 	 && cd /project \
-	 && composer require ipunkt/rancherize:^2.3.0 \
-	 && vendor/bin/rancherize plugin:install ipunkt/rancherize-backup-storagebox:1.0.0
+	 && apt-get update \
+	 && apt-get -y install libssh2-1-dev \
+	 && rm -Rf /var/lib/apt/lists/* \
+	 && pecl install -a ssh2-1.0 \
+	 && docker-php-ext-enable ssh2 \
+	 && composer require ipunkt/rancherize:^2.3.1 \
+	 && vendor/bin/rancherize plugin:install ipunkt/rancherize-backup-storagebox:1.0.3
 WORKDIR /project
 ENTRYPOINT ["bash", "/entrypoint.sh"]
