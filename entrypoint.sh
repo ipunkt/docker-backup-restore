@@ -28,13 +28,16 @@ download_rancher_compose() {
 		echo "Installed Rancher compose $RANCHER_COMPOSE_VERSION to $TARGET_RANCHER_COMPOSE"
 	fi
 
-	echo ${RANCHER_COMPOSE}
 }
 
-RANCHER_COMPOSE=`download_rancher_compose "$RANCHER_COMPOSE_VERSION"`
+download_rancher_compose "$RANCHER_COMPOSE_VERSION"
 
-JSON_ESCAPED_RANCHER_URL=`echo ${RANCHER_URL} | sed -e 's~/~\\/~g'`
-SED_ESCAPED_RANCHER_URL=`echo ${JSON_ESCAPED_RANCHER_URL} | sed -e 's/[\/&]/\\&/g'`
+# \\\\/ -> \\/ which is escaped by the shell to \/
+JSON_ESCAPED_RANCHER_URL=`echo "${RANCHER_URL}" | sed -e 's~/~\\\\/~g'`
+#echo "JSON_ESCAPED: $JSON_ESCAPED_RANCHER_URL"
+# \\\\\\\\ -> \\\\ which is then escaped by the shell to \\
+SED_ESCAPED_RANCHER_URL=`echo "${JSON_ESCAPED_RANCHER_URL}" | sed -e 's~[\]~\\\\\\\\~g'`
+#echo "SED_ESCAPED: $SED_ESCAPED_RANCHER_URL"
 sed \
 	-e "s~%%RANCHER_URL%%~${SED_ESCAPED_RANCHER_URL}~g" \
 	-e "s~%%RANCHER_KEY%%~${RANCHER_KEY}~g" \
