@@ -33,9 +33,10 @@ download_rancher_compose() {
 
 RANCHER_COMPOSE=`download_rancher_compose "$RANCHER_COMPOSE_VERSION"`
 
-ESCAPED_RANCHER_URL=`echo ${RANCHER_URL} | sed -e 's/[\/&]/\\&/g'`
+JSON_ESCAPED_RANCHER_URL=`echo ${RANCHER_URL} | sed -e 's~/~\\/~g'`
+SED_ESCAPED_RANCHER_URL=`echo ${JSON_ESCAPED_RANCHER_URL} | sed -e 's/[\/&]/\\&/g'`
 sed \
-	-e "s~%%RANCHER_URL%%~${ESCAPED_RANCHER_URL}~g" \
+	-e "s~%%RANCHER_URL%%~${SED_ESCAPED_RANCHER_URL}~g" \
 	-e "s~%%RANCHER_KEY%%~${RANCHER_KEY}~g" \
 	-e "s~%%RANCHER_SECRET%%~${RANCHER_SECRET}~g" \
 	-e "s~%%RANCHER_COMPOSE%%~${RANCHER_COMPOSE}~g" \
