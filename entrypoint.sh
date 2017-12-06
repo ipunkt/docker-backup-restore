@@ -13,8 +13,6 @@ BACKUP_PMA_LINE=""
 if [ ! -z "${BACKUP_PMA_URL}" ]  ; then
 	BACKUP_PMA_LINE=',"pma-url":"'${BACKUP_PMA_URL}'"'
 fi
-echo $BACKUP_PMA_LINE
-exit
 
 download_rancher_compose() {
 
