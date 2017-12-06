@@ -1,6 +1,6 @@
 # Workdir: /project
 
-if [ -z "${STORAGEBOX_METHOD}" ] ; then 
+if [ -z "${STORAGEBOX_METHOD}" ] ; then
 	STORAGEBOX_METHOD="sftp"
 fi
 
@@ -8,6 +8,13 @@ if [ ! -d ".rancherize" ] ; then
 	mkdir .rancherize
 fi
 
+BACKUP_PMA_URL=${BACKUP_PMA_URL:-}
+BACKUP_PMA_LINE=""
+if [ ! -z "${BACKUP_PMA_URL}" ]  ; then
+	BACKUP_PMA_LINE=',"pma-url":"'${BACKUP_PMA_URL}'"'
+fi
+echo $BACKUP_PMA_LINE
+exit
 
 download_rancher_compose() {
 
@@ -49,6 +56,7 @@ sed \
 	-e "s~%%STORAGEBOX_URL%%~${STORAGEBOX_URL}~g" \
 	-e "s~%%STORAGEBOX_USER%%~${STORAGEBOX_USER}~g" \
 	-e "s~%%STORAGEBOX_PASSWORD%%~${STORAGEBOX_PASSWORD}~g" \
+	-e "s~%%BACKUP_PMA_LINE%%~${BACKUP_PMA_LINE}~g" \
 	/opt/rancherize.tpl > /home/user/.rancherize
 
 case $1 in

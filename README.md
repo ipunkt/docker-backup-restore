@@ -68,6 +68,7 @@ double escape slashes -> http:\\/\\/example.com\\/ |
 | RANCHER\_COMPOSE\_VERSION | 0.12.2 | Rancherize version to use - will be downloaded if necessary |
 | BACKUP\_VOLUME | - | Backup storagebox option - on which global volumes are the backups kept? |
 | BACKUP\_DRIVER | - | Backup storagebox option - which storage-driver needs to be set so the BACKUP\_VOLUME will access the backups|
+| BACKUP\_PMA\_URL | - | Backup storagebox option - which the url which pma should attempt to publish |
 | STORAGEBOX\_METHOD | sftp | Backup storagebox option - method to access the storagebox to retrieve backup configuration |
 | STORAGEBOX\_URL | - | Backup storagebox option - url to access the storagebox to retrieve backup configuration |
 | STORAGEBOX\_USER | - | Backup storagebox option - user to access the storagebox to retrieve backup configuration |

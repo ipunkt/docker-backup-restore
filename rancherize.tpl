@@ -22,6 +22,7 @@
 					"box": "default-storagebox",
 					"volume":"%%BACKUP_VOLUME%%",
 					"volume-driver":"%%BACKUP_DRIVER%%"
+					%%BACKUP_PMA_LINE%%
 				}
 			}
 		},
