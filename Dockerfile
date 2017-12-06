@@ -7,7 +7,7 @@ ADD rancherize.json /project/rancherize.json
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh \
 	 && mkdir -p /home/user \
-	 && mkdir -p /project \
+	 && mkdir -p /project/.rancherize \
 	 && cd /project \
 	 && apt-get update \
 	 && apt-get -y install libssh2-1-dev \
