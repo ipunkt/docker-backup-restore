@@ -7,7 +7,7 @@ ADD rancherize.json /project/rancherize.json
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh \
 	 && mkdir -p /home/user \
-	 && mkdir -p /project \
+	 && mkdir -p /project/.rancherize \
 	 && cd /project \
 	 && apt-get update \
 	 && apt-get -y install libssh2-1-dev \
@@ -15,7 +15,7 @@ RUN chmod +x /entrypoint.sh \
 	 && pecl install -a ssh2-1.0 \
 	 && docker-php-ext-enable ssh2 \
 	 && composer require --update-with-dependencies 'ipunkt/rancherize:^2.18' \
-	 && vendor/bin/rancherize plugin:install ipunkt/rancherize-backup-storagebox:^2.0.0 \
+	 && vendor/bin/rancherize plugin:install ipunkt/rancherize-backup-storagebox:^2.0.1 \
 	 && vendor/bin/rancherize plugin:install ipunkt/rancherize-publish-traefik-rancher:^1.0.2
 WORKDIR /project
 ENTRYPOINT ["bash", "/entrypoint.sh"]
