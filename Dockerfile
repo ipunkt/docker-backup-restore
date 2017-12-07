@@ -1,4 +1,4 @@
-FROM ipunktbs/php-composer:7.2.0-1.5
+FROM ipunktbs/php-composer:7.2.0-1.5.2
 ENV HOME=/home/user
 LABEL maintainer="Sven Speckmaier <sps@ipunkt.biz>"
 
