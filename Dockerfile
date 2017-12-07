@@ -14,7 +14,6 @@ RUN chmod +x /entrypoint.sh \
 	 && rm -Rf /var/lib/apt/lists/* \
 	 && pecl install -a ssh2-1.0 \
 	 && docker-php-ext-enable ssh2 \
-	 && composer self-update --update-keys \
 	 && composer require ipunkt/rancherize:^2.19.1 \
 	 && vendor/bin/rancherize plugin:install -vvv ipunkt/rancherize-backup-storagebox:^2.0.4 \
 	 && vendor/bin/rancherize plugin:install -vvv ipunkt/rancherize-publish-traefik-rancher:^1.0.2
