@@ -1,14 +1,14 @@
 FROM debian:stable as builder
 COPY rancherize.tgz /
 RUN mkdir /project
-RUN cd /project
+WORKDIR /project
 RUN tar -xzf /rancherize.tgz
 
 FROM ipunktbs/php-composer:7.2.0-1.5.2
 ENV HOME=/home/user
 LABEL maintainer="Sven Speckmaier <sps@ipunkt.biz>"
 
-COPY --from=builder /project /
+COPY --from=builder /project /project
 ADD rancherize.tpl /opt/rancherize.tpl
 ADD rancherize.json /project/rancherize.json
 ADD entrypoint.sh /
